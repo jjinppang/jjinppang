@@ -1,0 +1,16 @@
+spring:
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/jjinppang?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: '!@qwasqw12'
+    jpa:
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          format_sql: true
+          use_sql_comments: true
+          show_sql: false
+          default_batch_fetch_size: 100
