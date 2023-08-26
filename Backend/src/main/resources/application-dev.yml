@@ -1,9 +1,9 @@
 spring:
     datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://0.0.0.0:3306/jjinppang-app-database?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
-      username: jjinppang-app-user
-      password: KJWwXqehoSQp
+      url: jdbc:mysql://jjinppang-dev-rds.cvm6vdobp8wp.ap-northeast-2.rds.amazonaws.com:3306/jjinppang?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+      username: jjinppang
+      password: wlsqkd!!
     jpa:
       database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
       hibernate:
