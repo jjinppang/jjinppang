@@ -4,7 +4,7 @@ server:
 spring:
     datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/jjinppang?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+      url: jdbc:mysql://jjinppang-dev-database2.csxj28g1u8fv.ap-northeast-2.rds.amazonaws.com:3306/jjinppang?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
       username: jjinppang
       password: 'wlsqkd!!'
     jpa:
