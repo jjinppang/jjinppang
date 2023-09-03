@@ -10,6 +10,9 @@ token: #?? ?? ?? ??
   secret: secret
 
 spring:
+            user-name-attribute: id
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
   security:
     oauth2:
       client:
@@ -51,9 +54,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://jjinppang-dev-rds.cvm6vdobp8wp.ap-northeast-2.rds.amazonaws.com:3306/jjinppang?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://jjinppang-dev-database.csxj28g1u8fv.ap-northeast-2.rds.amazonaws.com:3306/jjinppang?serverTimezone=Asia/Seoul&useSSL=false&createDatabaseIfNotExist=true
     username: jjinppang
-    password: wlsqkd!!
+    password: 'wlsqkd!!'
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
@@ -65,6 +68,6 @@ spring:
         show_sql: false
         default_batch_fetch_size: 100
       open-in-view: false
-  redis:
+    redis:
     host: 52.79.161.114
     port: 6379
