@@ -65,6 +65,6 @@ spring:
         show_sql: false
         default_batch_fetch_size: 100
       open-in-view: false
-    redis:
+  redis:
     host: 52.79.161.114
     port: 6379
