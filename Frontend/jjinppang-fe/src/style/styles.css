@@ -1,0 +1,94 @@
+/* styles.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* 여기에 사용자 정의 스타일을 추가하세요 */
+.mainpage-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainpage-search {
+  width: 614px;
+  height: 64px;
+  padding-left: 20px;
+  padding-right: 60px;
+  border: 1px solid #cdcdcd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainpage-font {
+  width: 715px;
+  height: 47px;
+
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+
+.login-form {
+  width: 391px;
+  height: 646px;
+  left: 525px;
+  top: 184px;
+  margin-top: 150px;
+  background: #ffffff;
+  box-shadow: 2px 2px 5px 2px rgba(152, 139, 252, 0.19);
+  border-radius: 10px;
+}
+
+.login-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.login-button button {
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 680px;
+  margin: 30px auto 10px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #838181;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex-grow: 1;
+  border: 1px solid #cdcdcd;
+  margin: 0 20px; /* 직선 간격 조정 가능 */
+}
