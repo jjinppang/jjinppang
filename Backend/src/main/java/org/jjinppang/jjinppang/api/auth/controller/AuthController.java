@@ -1,8 +1,8 @@
-package org.jjinppang.jjinppang.auth.controller;
+package org.jjinppang.jjinppang.api.auth.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.jjinppang.jjinppang.auth.response.TokenResponse;
-import org.jjinppang.jjinppang.auth.service.AuthService;
+import org.jjinppang.jjinppang.api.auth.response.TokenResponse;
+import org.jjinppang.jjinppang.api.auth.service.AuthService;
 import org.jjinppang.jjinppang.config.LoginUser;
 import org.jjinppang.jjinppang.domain.user.User;
 import org.springframework.http.HttpStatus;

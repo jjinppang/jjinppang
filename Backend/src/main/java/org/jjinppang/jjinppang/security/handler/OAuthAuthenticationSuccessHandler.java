@@ -2,8 +2,8 @@ package org.jjinppang.jjinppang.security.handler;
 
 
 import lombok.*;
-import org.jjinppang.jjinppang.auth.response.TokenResponse;
-import org.jjinppang.jjinppang.auth.service.AuthService;
+import org.jjinppang.jjinppang.api.auth.response.TokenResponse;
+import org.jjinppang.jjinppang.api.auth.service.AuthService;
 import org.jjinppang.jjinppang.security.oauth.CustomOAuth2User;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.*;
