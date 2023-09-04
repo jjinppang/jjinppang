@@ -1,3 +1,11 @@
+springdoc:
+  cache:
+    disabled: true
+  # 모든 @ControllerAdvice 응답이 모든 api의 응답으로 추가됨 (모든 응답에 추가되므로,
+  # 해당 response가 일어나지 않는 api에도 추가가 됨. false로 설정)
+  override-with-generic-response: false
+
+---
 spring:
   profiles:
     active: local
