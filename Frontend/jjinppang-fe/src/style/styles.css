@@ -1,0 +1,22 @@
+/* styles.css */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* 여기에 사용자 정의 스타일을 추가하세요 */
+.mainpage-search {
+    width: 614px;
+    height: 64px;
+    left: 413px;
+    top: 423px;
+
+    background: #ffffff;
+    border: 1px solid #cdcdcd;
+    border-radius: 10px;
+}
+
+#username::placeholder,
+#password::placeholder,
+#confirmPassword::placeholder {
+   font-size:14px; 
+}
