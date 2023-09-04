@@ -1,6 +1,6 @@
-package org.jjinppang.jjinppang.auth.service;
+package org.jjinppang.jjinppang.api.auth.service;
 
-import org.jjinppang.jjinppang.auth.response.TokenResponse;
+import org.jjinppang.jjinppang.api.auth.response.TokenResponse;
 
 public interface AuthService {
 

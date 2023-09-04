@@ -1,4 +1,4 @@
-package org.jjinppang.jjinppang.auth.response;
+package org.jjinppang.jjinppang.api.auth.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

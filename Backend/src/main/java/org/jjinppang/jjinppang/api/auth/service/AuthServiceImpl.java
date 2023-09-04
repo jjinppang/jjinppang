@@ -1,7 +1,7 @@
-package org.jjinppang.jjinppang.auth.service;
+package org.jjinppang.jjinppang.api.auth.service;
 
 import lombok.RequiredArgsConstructor;
-import org.jjinppang.jjinppang.auth.response.TokenResponse;
+import org.jjinppang.jjinppang.api.auth.response.TokenResponse;
 import org.jjinppang.jjinppang.common.NotFoundException;
 import org.jjinppang.jjinppang.common.NotMatchException;
 import org.jjinppang.jjinppang.domain.auth.Auth;
