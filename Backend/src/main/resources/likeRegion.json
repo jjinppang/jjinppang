@@ -1,0 +1,38 @@
+{
+  "results" : [
+    {
+      "regionName": "논현동",
+      "code": "11650108",
+      "center": [127.02899675964909, 37.511830546926625],
+      "clusterType": "dong",
+      "monthlyRentPrice" : "2000/120",
+      "yearRentPrice": "3억 5천"
+    },
+    {
+      "regionName": "역삼동",
+      "code": "11650108",
+      "center": [127.0370592518833, 37.496352750767834],
+      "clusterType": "dong",
+      "monthlyRentPrice" : "2000/110",
+      "yearRentPrice": "2억 2천"
+    },
+    {
+      "regionName": "삼성동",
+      "code": "11650108",
+      "center": [127.05630655544451, 37.516405288648585],
+      "clusterType": "dong",
+      "monthlyRentPrice" : "1000/104",
+      "yearRentPrice": "3억"
+    },
+    {
+      "regionName": "청담동",
+      "code": "11650108",
+      "center": [127.05222275309342, 37.52552397448836],
+      "clusterType": "dong",
+      "monthlyRentPrice" : "2000/115",
+      "yearRentPrice": "2억5천"
+    }
+  ]
+
+
+}
