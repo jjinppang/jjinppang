@@ -54,6 +54,17 @@ public class User {
         return user;
     }
 
+    // 유저 프로필 수정
+    public void updateUserProfile(String userNickname) {
+        this.userNickname = userNickname;
+    }
+
+    // 유저 이미지 수정
+    public void updateUserProfileImage(String userProfileImagePath) {
+        this.userProfileImagePath = userProfileImagePath;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
