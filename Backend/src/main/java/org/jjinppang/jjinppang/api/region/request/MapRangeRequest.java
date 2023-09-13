@@ -13,4 +13,5 @@ public class MapRangeRequest {
     double topLng;
     double bottomLng;
     int level;
+    String rentType;
 }

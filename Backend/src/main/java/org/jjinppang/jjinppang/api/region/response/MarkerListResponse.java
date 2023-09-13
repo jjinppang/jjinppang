@@ -19,6 +19,9 @@ public class MarkerListResponse {
     double centerLat;
     double centerLng;
 
+    int depositPrice;
+    int monthlyPrice;
+
     public static MarkerListResponse from(Region region) {
         return new MarkerListResponse(
                 region.getSidoCode(),
@@ -28,7 +31,8 @@ public class MarkerListResponse {
                 region.getEmdCode(),
                 region.getEmdName(),
                 region.getCenterLat(),
-                region.getCenterLng()
+                region.getCenterLng(),
+                1000,100
         );
     }
 
