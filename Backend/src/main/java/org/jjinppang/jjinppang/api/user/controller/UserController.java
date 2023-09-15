@@ -35,13 +35,13 @@ public class UserController {
         return ApiResponse.createSuccess(user);
     }
 
-    @Operation(summary = "유저 이미지 수정", description = "유저 이미지를 수정")
+    @Operation(summary = "유저 이미지 수정", description = "유저 이미지 수정")
     @PutMapping(value = "/profile/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<Object> updateUserProfileImage(@LoginUser User user, @RequestPart MultipartFile multipartFile){
 
         System.out.println(multipartFile);
         userService.updateUserProfileImage(user, multipartFile);
-        return ApiResponse.createSuccess("");
+        return ApiResponse.createSuccess(user);
     }
 
 

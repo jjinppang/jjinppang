@@ -11,7 +11,6 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
-@Setter
 public class User {
 
     @Id
@@ -63,6 +62,11 @@ public class User {
     // 유저 이미지 수정
     public void updateUserProfileImage(String userProfileImagePath) {
         this.userProfileImagePath = userProfileImagePath;
+    }
+
+    // 유저 기본 이미지 설정
+    public void setDefaultUserProfileImagePath(){
+        this.userProfileImagePath = "https://jjinppang-user-profile.s3.ap-northeast-2.amazonaws.com/default/default_image.png";
     }
 
 
