@@ -10,10 +10,16 @@ import org.jjinppang.jjinppang.domain.user.User;
 @AllArgsConstructor
 public class UserProfileResponse {
     String Nickname;
+    String UserProfileImagePath;
+
 
     public static UserProfileResponse from(User user){
+        if (user.getUserProfileImagePath() == null) {
+            user.setUserProfileImagePath("https://jjinppang-user-profile.s3.ap-northeast-2.amazonaws.com/default/default_image.png");
+        }
         return new UserProfileResponse(
-                user.getUserNickname()
+                user.getUserNickname(),
+                user.getUserProfileImagePath()
         );
     }
 

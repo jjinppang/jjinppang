@@ -8,6 +8,7 @@ import org.jjinppang.jjinppang.api.user.service.UserService;
 import org.jjinppang.jjinppang.common.response.ApiResponse;
 import org.jjinppang.jjinppang.config.LoginUser;
 import org.jjinppang.jjinppang.domain.user.User;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,11 +35,13 @@ public class UserController {
         return ApiResponse.createSuccess(user);
     }
 
-    @Operation(summary = "유저 이미지 수정", description = "유저 이미지 수정")
-    @PutMapping(value = "/update/image")
-    public ApiResponse<Object> updateUserProfileImage(@LoginUser User user, @RequestPart("file") MultipartFile multipartFile) throws Exception {
-        userService.updateUserProfileImage(user);
-        return ApiResponse.createSuccess(user);
+    @Operation(summary = "유저 이미지 수정", description = "유저 이미지를 수정")
+    @PutMapping(value = "/image/update", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ApiResponse<Object> updateUserProfileImage(@LoginUser User user, @RequestPart MultipartFile multipartFile){
+
+        System.out.println(multipartFile);
+        userService.updateUserProfileImage(user, multipartFile);
+        return ApiResponse.createSuccess("");
     }
 
 
