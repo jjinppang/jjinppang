@@ -21,7 +21,7 @@ public class UserController {
     private final UserService userService;
 
     @Operation(summary = "유저 프로필 조회", description = "유저 아이디로 프로필 조회")
-    @GetMapping
+    @GetMapping(value = "/profile")
     public ApiResponse<Object> getUserProfile(@LoginUser User user) {
         return ApiResponse.createSuccess(
                 userService.findUser(user)
@@ -29,14 +29,14 @@ public class UserController {
     }
 
     @Operation(summary = "유저 프로필 수정", description = "유저 이미지 제외한 정보 수정")
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/profile")
     public ApiResponse<Object> updateUserProfile(@LoginUser User user, @RequestBody UpdateUserProfileRequest request) {
         userService.updateUserProfile(user, request);
         return ApiResponse.createSuccess(user);
     }
 
     @Operation(summary = "유저 이미지 수정", description = "유저 이미지를 수정")
-    @PutMapping(value = "/image/update", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(value = "/profile/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<Object> updateUserProfileImage(@LoginUser User user, @RequestPart MultipartFile multipartFile){
 
         System.out.println(multipartFile);
