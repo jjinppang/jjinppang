@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/apidummy")
 @Tag(name = "Dummy", description = "아직 구현되지 않은 더미 API 문서입니다.")
 public class DummyController {
 
