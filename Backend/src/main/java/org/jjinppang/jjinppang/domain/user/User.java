@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
+@Setter
 public class User {
 
     @Id
@@ -53,6 +54,17 @@ public class User {
         user.userNickname = userNickname;
         return user;
     }
+
+    // 유저 프로필 수정
+    public void updateUserProfile(String userNickname) {
+        this.userNickname = userNickname;
+    }
+
+    // 유저 이미지 수정
+    public void updateUserProfileImage(String userProfileImagePath) {
+        this.userProfileImagePath = userProfileImagePath;
+    }
+
 
     @Override
     public String toString() {

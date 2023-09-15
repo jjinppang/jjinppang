@@ -63,6 +63,7 @@ dependencies {
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.9'
 
+    implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.3.1'
 }
 
 def querydslDir = "$buildDir/generated/querydsl"
