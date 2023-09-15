@@ -15,8 +15,9 @@ public class UserProfileResponse {
 
     public static UserProfileResponse from(User user){
         if (user.getUserProfileImagePath() == null) {
-            user.setUserProfileImagePath("https://jjinppang-user-profile.s3.ap-northeast-2.amazonaws.com/default/default_image.png");
+            user.setDefaultUserProfileImagePath();
         }
+
         return new UserProfileResponse(
                 user.getUserNickname(),
                 user.getUserProfileImagePath()

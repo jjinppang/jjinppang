@@ -48,14 +48,12 @@ public class UserServicelmpl implements UserService{
     public void updateUserProfile(User user, UpdateUserProfileRequest request) {
         user.updateUserProfile(request.getUserNickname());
         userRepository.save(user);
-        
     }
 
     @Transactional
     @Override
     public void updateUserProfileImage(User user, MultipartFile multipartFile) {
-        String newUserProfileImagePath = upload(multipartFile,"upload");
-
+        String newUserProfileImagePath = uploadImage(multipartFile,"upload");
         String prevUserProfileImage = user.getUserProfileImagePath();
 
         if (prevUserProfileImage != null) {
@@ -64,12 +62,12 @@ public class UserServicelmpl implements UserService{
 
         user.updateUserProfileImage(newUserProfileImagePath);
         userRepository.save(user);
-
     }
-    public String upload(MultipartFile multipartFile, String dirName){
+
+    private String uploadImage(MultipartFile multipartFile, String dirName){ // S3 서버에 파일을 업로드
         String fileName = dirName + "/" + createFileName(multipartFile.getOriginalFilename());
         ObjectMetadata objectMetadata = new ObjectMetadata();
-        objectMetadata.setContentType(multipartFile.getContentType()); // multipartfile 종류 확인
+        objectMetadata.setContentType(multipartFile.getContentType());
 
         try (InputStream inputStream = multipartFile.getInputStream()){
             amazonS3Client.putObject(
@@ -79,30 +77,26 @@ public class UserServicelmpl implements UserService{
             throw new FileSystemNotFoundException();
         }
         return amazonS3Client.getUrl(bucket, fileName).toString();
-
     }
 
-    public void deleteImage(String fileName, String dirName) {
+    private void deleteImage(String fileName, String dirName) { // S3 서버에서 파일을 삭제
         amazonS3Client.deleteObject(new DeleteObjectRequest(bucket, dirName+"/"+fileName));
     }
 
-    public String createFileName(String fileName) {
+    private String createFileName(String fileName) { // 이미지 저장을 위한 random uuid를 반환
         return UUID.randomUUID().toString().concat(getFileExtension(fileName));
     }
 
-    public String getFileRandomName(String userProfileImagePath){
+    private String getFileRandomName(String userProfileImagePath){ // 기존 이미지 url에서 이미지 이름(uuid)을 반환
         return userProfileImagePath.substring(userProfileImagePath.lastIndexOf("/")+1);
     }
 
-    public String getFileExtension(String fileName) {
+    private String getFileExtension(String fileName) { // 업로드된 파일의 확장자를 반환
         try {
             return fileName.substring(fileName.lastIndexOf("."));
         } catch (StringIndexOutOfBoundsException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "잘못된 형식의 파일(" + fileName + ") 입니다.");
         }
     }
-
-
-
 
 }
