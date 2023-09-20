@@ -7,10 +7,13 @@ import org.jjinppang.jjinppang.api.user.request.UpdateUserProfileRequest;
 import org.jjinppang.jjinppang.api.user.service.UserService;
 import org.jjinppang.jjinppang.common.response.ApiResponse;
 import org.jjinppang.jjinppang.config.LoginUser;
+import org.jjinppang.jjinppang.domain.region.Region;
 import org.jjinppang.jjinppang.domain.user.User;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
 
 
 @RequestMapping("api/user")
@@ -32,7 +35,7 @@ public class UserController {
     @PutMapping(value = "/profile")
     public ApiResponse<Object> updateUserProfile(@LoginUser User user, @RequestBody UpdateUserProfileRequest request) {
         userService.updateUserProfile(user, request);
-        return ApiResponse.createSuccess(user);
+        return ApiResponse.createSuccess("");
     }
 
     @Operation(summary = "유저 이미지 수정", description = "유저 이미지 수정")
@@ -41,8 +44,23 @@ public class UserController {
 
         System.out.println(multipartFile);
         userService.updateUserProfileImage(user, multipartFile);
-        return ApiResponse.createSuccess(user);
+        return ApiResponse.createSuccess("");
     }
 
+    @Operation(summary = "유저 관심 지역 조회", description = "지역에 기반한 유저 관심 지역 조회")
+    @GetMapping(value = "/interest-region")
+    public ApiResponse<Object> getUserInterestRegion(@LoginUser User user){
+        return ApiResponse.createSuccess(
+                userService.findUserInterestRegion(user)
+        );
+    }
+
+    @Operation(summary = "유저 관심 지역 저장", description = "지역에 기반한 유저 관심 지역 저장")
+    @PostMapping(value = "/interest-region")
+    public ApiResponse<Object> createUserInterestRegion(@LoginUser User user, @RequestBody Map<String, String> request){
+        String regionId = request.get("regionId");
+        userService.createUserInterestRegion(user, regionId);
+        return ApiResponse.createSuccess("");
+    }
 
 }
