@@ -12,7 +12,7 @@ public interface UserInterestRegionRepository extends JpaRepository<UserInterest
 
     List<UserInterestRegion> findUserInterestRegionByUser(User user);
 
-    Optional<UserInterestRegion> findByUserandRegion(User user, Region region);
+    Optional<UserInterestRegion> findByUserAndRegion(User user, Region region);
 
 
 

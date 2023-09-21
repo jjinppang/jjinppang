@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.FileSystemNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -91,8 +92,11 @@ public class UserServicelmpl implements UserService{
         Region region = regionRepository.findById(request.getRegionId())
                 .orElseThrow(() -> new NotFoundException("존재하지 않는 지역입니다"));
 
-        userInterestRegionRepository.findByUserandRegion(user, region)
-                .orElseThrow(() -> new Exception("이미 관심지역으로 추가되어 있습니다"));
+        Optional<UserInterestRegion> userInterestRegion = userInterestRegionRepository.findByUserAndRegion(user, region);
+
+        if (userInterestRegion.isPresent()){
+            throw new RuntimeException("이미 관심 지역으로 추가되어있습니다");
+        }
 
         UserInterestRegion newUserInterestRegion = UserInterestRegion.createUserInterestRegion(user, region);
         userInterestRegionRepository.save(newUserInterestRegion);
