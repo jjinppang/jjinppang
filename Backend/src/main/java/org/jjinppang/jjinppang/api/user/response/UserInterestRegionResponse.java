@@ -12,6 +12,8 @@ import org.jjinppang.jjinppang.domain.user.UserInterestRegion;
 @AllArgsConstructor
 public class UserInterestRegionResponse {
 
+    Integer userInterestRegionId;
+
     double centerLng;
     double centerLat;
 
@@ -28,6 +30,7 @@ public class UserInterestRegionResponse {
         Region region = userInterestRegion.getRegion();
 
         return new UserInterestRegionResponse(
+                userInterestRegion.getUserInterestRegionId(),
                 region.getCenterLng(),
                 region.getCenterLat(),
                 region.getEmdCode(),
