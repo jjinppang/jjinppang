@@ -8,10 +8,17 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jjinppang.jjinppang.api.user.request.CreateUserInterestRegionRequest;
 import org.jjinppang.jjinppang.api.user.request.UpdateUserProfileRequest;
+import org.jjinppang.jjinppang.api.user.response.UserInterestRegionResponse;
 import org.jjinppang.jjinppang.api.user.response.UserProfileResponse;
 import org.jjinppang.jjinppang.common.NotFoundException;
+import org.jjinppang.jjinppang.common.NotMatchException;
+import org.jjinppang.jjinppang.domain.region.Region;
+import org.jjinppang.jjinppang.domain.region.repository.RegionRepository;
 import org.jjinppang.jjinppang.domain.user.User;
+import org.jjinppang.jjinppang.domain.user.UserInterestRegion;
+import org.jjinppang.jjinppang.domain.user.repository.UserInterestRegionRepository;
 import org.jjinppang.jjinppang.domain.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -23,7 +30,12 @@ import org.springframework.web.server.ResponseStatusException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.FileSystemNotFoundException;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static org.jjinppang.jjinppang.common.NotMatchException.USER_NOT_MATCH;
 
 @Slf4j
 @Service
@@ -32,6 +44,8 @@ import java.util.UUID;
 public class UserServicelmpl implements UserService{
 
     private final UserRepository userRepository;
+    private final UserInterestRegionRepository userInterestRegionRepository;
+    private final RegionRepository regionRepository;
     private final AmazonS3Client amazonS3Client;
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
@@ -63,6 +77,45 @@ public class UserServicelmpl implements UserService{
         user.updateUserProfileImage(newUserProfileImagePath);
         userRepository.save(user);
     }
+
+    @Override
+    public List<UserInterestRegionResponse> findUserInterestRegion(User user) {
+        return userInterestRegionRepository.findUserInterestRegionByUser(user).stream().map(UserInterestRegionResponse::from).collect(Collectors.toList());
+    }
+
+
+    @Transactional
+    @Override
+    public void createUserInterestRegion(User user, CreateUserInterestRegionRequest request) {
+        userRepository.findByUserId(user.getUserId())
+                .orElseThrow(() -> new NotFoundException(NotFoundException.USER_NOT_FOUND));
+        Region region = regionRepository.findById(request.getRegionId())
+                .orElseThrow(() -> new NotFoundException("존재하지 않는 지역입니다"));
+
+        Optional<UserInterestRegion> userInterestRegion = userInterestRegionRepository.findByUserAndRegion(user, region);
+
+        if (userInterestRegion.isPresent()){
+            throw new RuntimeException("이미 관심 지역으로 추가되어있습니다");
+        }
+
+        UserInterestRegion newUserInterestRegion = UserInterestRegion.createUserInterestRegion(user, region);
+        userInterestRegionRepository.save(newUserInterestRegion);
+    }
+
+    @Transactional
+    @Override
+    public void deleteUserInterestRegion(User user, Integer userInterestRegionId) {
+        UserInterestRegion userInterestRegion = userInterestRegionRepository.findById(userInterestRegionId)
+                .orElseThrow(() -> new NotFoundException("존재하지 않는 관심 지역입니다"));
+        if (!user.getUserId().equals(userInterestRegion.getUser().getUserId())){
+            throw new NotMatchException(USER_NOT_MATCH);
+        }
+
+        userInterestRegionRepository.delete(userInterestRegion);
+    }
+
+
+    // 사용자 프로필 이미지 S3 업로드 관련 함수
 
     private String uploadImage(MultipartFile multipartFile, String dirName){ // S3 서버에 파일을 업로드
         String fileName = dirName + "/" + createFileName(multipartFile.getOriginalFilename());
