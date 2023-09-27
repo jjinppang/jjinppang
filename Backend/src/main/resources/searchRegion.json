@@ -2,10 +2,11 @@
   "results": [
     {
       "type": "region",
+      "buildingType": null,
       "code": "43770350",
       "id": null,
       "name": "삼성면",
-      "full_name": "충청북도 음성군 삼성면",
+      "fullName": "충청북도 음성군 삼성면",
       "zoom": 14,
       "location": [
         127.49364531543304,
@@ -14,10 +15,11 @@
     },
     {
       "type": "region",
+      "buildingType": null,
       "code": "30110118",
       "id": null,
       "name": "삼성동",
-      "full_name": "대전광역시 동구 삼성동",
+      "fullName": "대전광역시 동구 삼성동",
       "zoom": 14,
       "location": [
         127.42573415199621,
@@ -26,10 +28,11 @@
     },
     {
       "type": "region",
+      "buildingType": null,
       "code": "11680105",
       "id": null,
       "name": "삼성동",
-      "full_name": "서울특별시 강남구 삼성동",
+      "fullName": "서울특별시 강남구 삼성동",
       "zoom": 14,
       "location": [
         127.05630655544451,
@@ -38,10 +41,25 @@
     },
     {
       "type": "building",
+      "buildingType": "오피스텔",
       "code": null,
       "id": null,
       "name": "한흥삼성",
-      "full_name": "서울특별시 강남구 삼성동 한흥삼성",
+      "fullName": "서울특별시 강남구 삼성동",
+      "zoom": 17,
+      "location": [
+        127.047087,
+        37.510859
+      ]
+
+    },
+    {
+      "type": "building",
+      "buildingType": "단독/다가구",
+      "code": null,
+      "id": null,
+      "name": "다가구 가짜 삼성",
+      "fullName": "서울특별시 강남구 삼성동",
       "zoom": 17,
       "location": [
         127.047087,
