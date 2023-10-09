@@ -1,0 +1,105 @@
+{
+    "result": {
+        "info": {
+            "regionId": "4113510300",
+            "name": "정자동",
+            "fullName": "경기도 성남시 분당구",
+            "isInterest": false
+        },
+        "chart": {
+            "type": "year",
+            "deposit": "monthly",
+            "range": [
+                "300/50",
+                "10000/20"
+            ],
+            "count": 13,
+            "data": [
+                [
+                    1000,
+                    30
+                ],
+                [
+                    2000,
+                    33
+                ],
+                [
+                    5000,
+                    50
+                ],
+                [
+                    1000,
+                    70
+                ],
+                [
+                    1500,
+                    65
+                ],
+                [
+                    2000,
+                    80
+                ],
+                [
+                    2000,
+                    55
+                ],
+                [
+                    2000,
+                    60
+                ],
+                [
+                    2000,
+                    70
+                ],
+                [
+                    2000,
+                    80
+                ],
+                [
+                    2000,
+                    90
+                ],
+                [
+                    2000,
+                    100
+                ],
+                [
+                    3000,
+                    66
+                ]
+            ]
+        },
+        "recentContract": [
+            {
+                "contractId": "1",
+                "contractDate": "2023.09",
+                "contractPrice": "500/58",
+                "contractArea": "37.46"
+            },
+            {
+                "contractId": "2",
+                "contractDate": "2023.09",
+                "contractPrice": "9000/30",
+                "contractArea": "37.46"
+            },
+            {
+                "contractId": "3",
+                "contractDate": "2023.09",
+                "contractPrice": "10000/24",
+                "contractArea": "37.46"
+            },
+            {
+                "contractId": "4",
+                "contractDate": "2023.09",
+                "contractPrice": "1000/55",
+                "contractArea": "37.46"
+            },
+            {
+                "contractId": "5",
+                "contractDate": "2023.09",
+                "contractPrice": "3000/60",
+                "contractArea": "37.46"
+            }
+        ]
+    }
+}
