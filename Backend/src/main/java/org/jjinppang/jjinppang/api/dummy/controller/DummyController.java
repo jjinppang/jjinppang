@@ -2,32 +2,21 @@ package org.jjinppang.jjinppang.api.dummy.controller;
 
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
-import org.jjinppang.jjinppang.batch.contract.OpenApiConnection;
-import org.jjinppang.jjinppang.batch.contract.OpenApiRunner;
 import org.jjinppang.jjinppang.common.NotFoundException;
 import org.jjinppang.jjinppang.common.response.ApiResponse;
-import org.jjinppang.jjinppang.config.LoginUser;
-import org.jjinppang.jjinppang.domain.user.User;
 import org.jjinppang.jjinppang.domain.user.repository.UserRepository;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 @RestController
 @RequiredArgsConstructor
@@ -36,8 +25,8 @@ import java.nio.file.Path;
 public class DummyController {
 
     private final UserRepository userRepository;
-    private final OpenApiRunner openApiRunner;
-    private final OpenApiConnection openApiConnection = new OpenApiConnection("http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent", "brx3K3JOj/eXfLq/kFcyZJCas2gBPqCBvKTqbf8J3KtTif4dIFljHQED9u9ZsoVquE+U7F0Zza1Sn/ISwrI1Jg==", "11110", "201512");
+//    private final OpenApiRunner openApiRunner;
+//    private final OpenApiConnection openApiConnection = new OpenApiConnection("http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHRent", "brx3K3JOj/eXfLq/kFcyZJCas2gBPqCBvKTqbf8J3KtTif4dIFljHQED9u9ZsoVquE+U7F0Zza1Sn/ISwrI1Jg==", "11110", "201512");
 
     public Object getDummy(String filePath) {
         try {
@@ -83,40 +72,40 @@ public class DummyController {
         }
     }
 
-    @GetMapping("/test/contract")
-    public ResponseEntity<?> testContract() {
-        return openApiConnection.dummyfetch();
-    }
+//    @GetMapping("/test/contract")
+//    public ResponseEntity<?> testContract() {
+//        return openApiConnection.dummyfetch();
+//    }
 
-    @GetMapping("/test/runner")
-    public ResponseEntity<?> testRunner() {
-
-        try {
-            ClassPathResource cpr = new ClassPathResource("/sigungu_code.csv");
-
-            String[] dates = {"202201", "202202", "202203", "202204", "202205", "202206", "202207", "202208", "202209", "202210", "202211", "202212", "202301", "202302", "202303", "202304", "202305", "202306", "202307", "202308", "202309"};
-            String[] regionCodes = new String[265];
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(cpr.getInputStream(), "UTF-8"));
-
-            String line = "";
-
-            for (int i = 0; (line = br.readLine()) != null; i++) {
-                regionCodes[i] = line;
-            }
-            System.out.println(regionCodes[240]);
-
-            for (String date : dates) {
-                for (String regionCode : regionCodes) {
-                    System.out.println("code: " + regionCode + " date: " + date);
-                    openApiRunner.run(regionCode, date);
-                }
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return ResponseEntity.ok("success");
-    }
+//    @GetMapping("/test/runner")
+//    public ResponseEntity<?> testRunner() {
+//
+//        try {
+//            ClassPathResource cpr = new ClassPathResource("/sigungu_code.csv");
+//
+//            String[] dates = {"202201", "202202", "202203", "202204", "202205", "202206", "202207", "202208", "202209", "202210", "202211", "202212", "202301", "202302", "202303", "202304", "202305", "202306", "202307", "202308", "202309"};
+//            String[] regionCodes = new String[265];
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(cpr.getInputStream(), "UTF-8"));
+//
+//            String line = "";
+//
+//            for (int i = 0; (line = br.readLine()) != null; i++) {
+//                regionCodes[i] = line;
+//            }
+//            System.out.println(regionCodes[240]);
+//
+//            for (String date : dates) {
+//                for (String regionCode : regionCodes) {
+//                    System.out.println("code: " + regionCode + " date: " + date);
+//                    openApiRunner.run(regionCode, date);
+//                }
+//            }
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        return ResponseEntity.ok("success");
+//    }
 }
