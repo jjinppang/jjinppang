@@ -10,6 +10,7 @@ import org.jjinppang.jjinppang.domain.user.User;
 @AllArgsConstructor
 public class UserProfileResponse {
     String Nickname;
+    String Email;
     String UserProfileImagePath;
 
 
@@ -20,6 +21,7 @@ public class UserProfileResponse {
 
         return new UserProfileResponse(
                 user.getUserNickname(),
+                user.getUserEmail(),
                 user.getUserProfileImagePath()
         );
     }
