@@ -18,7 +18,7 @@ public class User {
     @Column(name = "user_id")
     private Integer userId;
 
-    @Column(nullable = true)
+    @Column
     private String userEmail;
 
     @Column(nullable = false)
@@ -51,13 +51,19 @@ public class User {
         user.userName = userName;
         user.userRole = role;
         user.userNickname = userNickname;
+        user.userEmail = "";
         return user;
     }
 
-    // 유저 프로필 수정
-    public void updateUserProfile(String userNickname) {
+    // 유저 닉네임 수정
+    public void updateUserNickname(String userNickname) {
         this.userNickname = userNickname;
     }
+    // 유저 이메일 수정
+    public void updateUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
 
     // 유저 이미지 수정
     public void updateUserProfileImage(String userProfileImagePath) {
@@ -68,6 +74,7 @@ public class User {
     public void setDefaultUserProfileImagePath(){
         this.userProfileImagePath = "https://jjinppang-user-profile.s3.ap-northeast-2.amazonaws.com/default/default_image.png";
     }
+
 
 
     @Override
