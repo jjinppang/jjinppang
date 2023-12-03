@@ -60,7 +60,12 @@ public class UserServicelmpl implements UserService{
     @Transactional
     @Override
     public void updateUserProfile(User user, UpdateUserProfileRequest request) {
-        user.updateUserProfile(request.getUserNickname());
+        if (!request.getUserEmail().equals(user.getUserEmail())){
+            user.updateUserEmail(request.getUserEmail());
+        }
+        if (!request.getUserNickname().equals(user.getUserNickname())){
+            user.updateUserNickname(request.getUserNickname());
+        }
         userRepository.save(user);
     }
 
